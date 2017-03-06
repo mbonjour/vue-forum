@@ -28,8 +28,8 @@ export default {
   props: ['post'],
   data () {
     return {
-      title:"",
-      body:"",
+      title: '',
+      body: '',
       userId: null,
       id: null
     }

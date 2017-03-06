@@ -7,8 +7,11 @@
 </template>
 
 <script>
+import postComponent from './postComponent.vue'
+
 export default {
   name: 'helloComponent',
+  components: { postComponent },
   data () {
     return {
       posts: []
