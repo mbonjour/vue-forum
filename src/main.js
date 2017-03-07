@@ -9,7 +9,6 @@ import lodash from 'lodash'
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 Vue.prototype.$_ = lodash
-Vue.prototype.$store = {}
 
 /* eslint-disable no-new */
 new Vue({

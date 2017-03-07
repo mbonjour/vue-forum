@@ -16,10 +16,9 @@ export default {
     }
   },
   created () {
-    console.log(this.$store)
     // eslint-disable-next-line
-    this.$http.get('http://jsonplaceholder.typicode.com/posts/').then((response) => {
-      this.title = response.data[0].title
+    this.$http.get('http://jsonplaceholder.typicode.com/posts/2').then((response) => {
+      this.title = response.data.title
     })
   }
 }
