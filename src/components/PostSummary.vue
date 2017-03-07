@@ -1,12 +1,11 @@
 <template>
   <div class="postSummary">
-    
+    {{title}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'postSummary',
   props: ['idPost'],
   data () {
     return {
@@ -16,10 +15,11 @@ export default {
       id: null
     }
   },
-  created: () => {
+  created () {
+    console.log(this.$store)
     // eslint-disable-next-line
-    axios.get('http://jsonplaceholder.typicode.com/posts/' + idPost ).then((data) => {
-      this.posts = data.data
+    this.$http.get('http://jsonplaceholder.typicode.com/posts/').then((response) => {
+      this.title = response.data[0].title
     })
   }
 }
