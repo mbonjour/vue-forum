@@ -17,3 +17,8 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+router.beforeEach((to, from, next) => {
+  // store.loaded = false
+  next()
+})

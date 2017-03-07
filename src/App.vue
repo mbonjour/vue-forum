@@ -8,25 +8,24 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <router-link to="/" class="mdl-navigation__link">Home</router-link>
+        <router-link to="/posts" class="mdl-navigation__link">Posts</router-link>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Title</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
+      <router-link to="/" class="mdl-navigation__link">Home</router-link>
+      <router-link to="/posts" class="mdl-navigation__link">Posts</router-link>
     </nav>
   </div>
   <main class="mdl-layout__content">
     <div class="page-content">
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        
+        <router-view></router-view>
+      </transition>
     </div>
   </main>
 </div>
@@ -39,10 +38,10 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 </style>
