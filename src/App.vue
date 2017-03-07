@@ -3,7 +3,7 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">Title</span>
+      <span class="mdl-layout-title">VueForum</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
@@ -13,17 +13,16 @@
       </nav>
     </div>
   </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
+  <div class="mdl-layout__drawer" id="drawer">
+    <span class="mdl-layout-title">VueForum</span>
     <nav class="mdl-navigation">
-      <router-link to="/" class="mdl-navigation__link">Home</router-link>
-      <router-link to="/posts" class="mdl-navigation__link">Posts</router-link>
+      <div @click="toggleNav()"><router-link to="/" class="mdl-navigation__link">Home</router-link></div>
+      <div @click="toggleNav()"><router-link to="/posts" class="mdl-navigation__link">Posts</router-link></div>
     </nav>
   </div>
   <main class="mdl-layout__content">
     <div class="page-content">
       <transition name="fade" mode="out-in">
-        
         <router-view></router-view>
       </transition>
     </div>
@@ -33,13 +32,21 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    toggleNav () {
+      // eslint-disable-next-line
+      var layout = document.querySelector('.mdl-layout')
+      layout.MaterialLayout.toggleDrawer()
+      console.log('prout')
+    }
+  }
 }
 </script>
 
 <style>
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s ease;
+  transition: opacity .2s ease;
 }
 .fade-enter, .fade-leave-active {
   opacity: 0

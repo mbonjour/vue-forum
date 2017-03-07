@@ -52,12 +52,4 @@ export default {
   right: 10%;
   bottom: 5%;
 }
-.loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-}
-.mdl-progress{
-  width: 100%;
-}
 </style>
