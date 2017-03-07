@@ -1,6 +1,5 @@
 <template>
   <div class="listPosts">
-    <post-summary v-if="posts.length > 1"></post-summary>
     <ul class="demo-list-three mdl-list">
       <li class="mdl-list__item mdl-list__item--three-line" v-for="post in posts">
         <span class="mdl-list__item-primary-content">
@@ -12,16 +11,15 @@
         </span>
       </li>
     </ul>
-    <button @click="addPost">add</button>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" @click="addPost">
+      <i class="material-icons">add</i>
+    </button>
   </div>
 </template>
 
 <script>
-import PostSummary from './PostSummary.vue'
-
 export default {
   name: 'listPosts',
-  components: { PostSummary },
   data () {
     return {
       posts: []
@@ -31,7 +29,7 @@ export default {
     // console.log(this)
     // eslint-disable-next-line
     this.$http.get('http://jsonplaceholder.typicode.com/posts').then((data) => {
-      this.posts = this.$_.dropRight(data.data, 85)
+      this.posts = this.$_.dropRight(data.data, 95)
     })
   },
   methods: {
@@ -41,3 +39,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.mdl-button {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+</style>
