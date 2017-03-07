@@ -49,7 +49,7 @@ export default {
 <style>
 .mdl-button {
   position: fixed;
-  right: 10%;
-  bottom: 5%;
+  right: 20px;
+  bottom: 20px;
 }
 </style>

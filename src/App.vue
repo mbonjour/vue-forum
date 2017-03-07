@@ -35,10 +35,8 @@ export default {
   name: 'app',
   methods: {
     toggleNav () {
-      // eslint-disable-next-line
       var layout = document.querySelector('.mdl-layout')
       layout.MaterialLayout.toggleDrawer()
-      console.log('prout')
     }
   }
 }
@@ -46,7 +44,7 @@ export default {
 
 <style>
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity .3s ease;
 }
 .fade-enter, .fade-leave-active {
   opacity: 0
