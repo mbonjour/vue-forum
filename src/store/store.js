@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     loader: {
       loading: false,
-      progress: 0
+      progress: 50
     }
   },
   mutations: {

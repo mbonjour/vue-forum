@@ -36,7 +36,7 @@ export default {
     // eslint-disable-next-line
     this.$http.get('http://jsonplaceholder.typicode.com/posts', { 
       onDownloadProgress: function (progressEvent) {
-        console.log(Math.floor((progressEvent.loaded * 100) / progressEvent.total))
+        // console.log(Math.floor((progressEvent.loaded * 100) / progressEvent.total))
       }}).then((data) => {
         this.$store.dispatch('toggleLoading')
         this.posts = this.$_.dropRight(data.data, 85) // Voir si l'on veut tronquer le body / titre trop long parfois (lodash)
