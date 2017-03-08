@@ -34,24 +34,13 @@ export default {
   created () {
     this.$store.dispatch('toggleLoading')
     // eslint-disable-next-line
-    // this.$http.get('http://jsonplaceholder.typicode.com/posts', { 
-    //   onDownloadProgress: function (progressEvent) {
-    //     console.log(Math.floor((progressEvent.loaded * 100) / progressEvent.total))
-    //   }}).then((data) => {
-    //     this.$store.dispatch('toggleLoading')
-    //     this.posts = this.$_.dropRight(data.data, 85) // Voir si l'on veut tronquer le body / titre trop long parfois (lodash)
-    //   })
-    var req = new XMLHttpRequest()
-    req.addEventListener('progress', (evt) => {
-      console.dir(evt)
-      console.log((evt.loaded / evt.total) * 100)
-    })
-    req.open('GET', 'http://jsonplaceholder.typicode.com/posts', true)
-    req.addEventListener('load', (aEvt) => {
-      this.$store.dispatch('toggleLoading')
-      this.posts = this.$_.dropRight(JSON.parse(req.response), 85) // Voir si l'on veut tronquer le body / titre trop long parfois (lodash)
-    })
-    req.send()
+    this.$http.get('http://jsonplaceholder.typicode.com/posts', { 
+      onDownloadProgress: function (progressEvent) {
+        console.log(Math.floor((progressEvent.loaded * 100) / progressEvent.total))
+      }}).then((data) => {
+        this.$store.dispatch('toggleLoading')
+        this.posts = this.$_.dropRight(data.data, 85) // Voir si l'on veut tronquer le body / titre trop long parfois (lodash)
+      })
   },
   methods: {
     addPost () {

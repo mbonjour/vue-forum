@@ -16,14 +16,20 @@ export default new Vuex.Store({
     },
     INCREMENT_LOADER_PROGRESS (state) {
       state.loader.progress++
+    },
+    RESET_LOADER_PROGRESS (state) {
+      state.loader.progress = 0
     }
   },
   actions: {
     toggleLoading ({commit}) {
       commit('TOGGLE_LOADER_LOADING')
     },
-    incrementPorgress ({commit}) {
+    incrementProgress ({commit}) {
       commit('INCREMENT_LOADER_PROGRESS')
+    },
+    resetProgress ({commit}) {
+      commit('RESET_LOADER_PROGRESS')
     }
   },
   getters: {
