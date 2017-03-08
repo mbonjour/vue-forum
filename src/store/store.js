@@ -5,19 +5,29 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loading: false
+    loader: {
+      loading: false,
+      progress: 0
+    }
   },
   mutations: {
-    TOGGLE_LOADING (state) {
-      state.loading = !state.loading
+    TOGGLE_LOADER_LOADING (state) {
+      state.loader.loading = !state.loader.loading
+    },
+    INCREMENT_LOADER_PROGRESS (state) {
+      state.loader.progress++
     }
   },
   actions: {
     toggleLoading ({commit}) {
-      commit('TOGGLE_LOADING')
+      commit('TOGGLE_LOADER_LOADING')
+    },
+    incrementPorgress ({commit}) {
+      commit('INCREMENT_LOADER_PROGRESS')
     }
   },
   getters: {
-    loading: state => state.loading
+    loading: state => state.loader.loading,
+    progress: state => state.loader.progress
   }
 })

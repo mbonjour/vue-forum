@@ -18,19 +18,17 @@
     },
     mounted () {
       // mettre interval autour for
-      for (let i = 0; i <= 100; i++) {
+      for (this.progress = 0; this.progress < 100; this.progress++) {
         // modifier pour que ça n'arrive jamais à 100
-        this.progress = i
-        // if (this.$store.getters.loading === false) {
-        //   i = 100
-        //   this.progress = i
-        //   break
-        // }
+        this.progress++
+        if (this.$store.getters.loading === false) {
+          this.progress = 100
+        }
       }
     },
     watch: {
       progress () {
-        console.log(this.progress)
+        // console.log(this.progress)
       }
     }
   }
