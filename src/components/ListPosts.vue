@@ -1,6 +1,6 @@
 <template>
   <div class="listPosts">
-    <vloader v-if="loading"></vloader>
+    <vloader v-if="this.$store.getters.loading"></vloader>
     <div v-else>
       <ul class="demo-list-three mdl-list">
         <li class="mdl-list__item mdl-list__item--three-line" v-for="post in posts">
@@ -13,28 +13,29 @@
           </span>
         </li>
       </ul>
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" @click="addPost">
+        <i class="material-icons">add</i>
+      </button>
     </div>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" @click="addPost">
-      <i class="material-icons">add</i>
-    </button>
   </div>
 </template>
 
 <script>
-import vloader from './vue-loader'
+import vloader from './VueLoader'
+
 export default {
   name: 'listPosts',
   components: { vloader },
   data () {
     return {
-      posts: null,
-      loading: true
+      posts: null
     }
   },
   created () {
+    this.$store.dispatch('toggleLoading')
     // eslint-disable-next-line
     this.$http.get('http://jsonplaceholder.typicode.com/posts').then((data) => {
-      this.loading = false
+      this.$store.dispatch('toggleLoading')
       this.posts = this.$_.dropRight(data.data, 95)
     })
   },
